@@ -79,11 +79,18 @@ export function Navbar() {
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
           isScrolled
-            ? "bg-white/70 dark:bg-slate-950/70 backdrop-blur-2xl border-b border-black/[0.06] dark:border-white/[0.06] shadow-sm py-2"
-            : "bg-transparent py-4"
+            ? "py-2"
+            : "py-4"
         )}
       >
-        <nav className="mx-auto flex max-w-6xl items-center justify-between px-6">
+        <nav
+          className={cn(
+            "mx-auto flex max-w-5xl items-center justify-between px-6 transition-all duration-500 rounded-2xl",
+            isScrolled
+              ? "bg-white/60 dark:bg-white/[0.04] backdrop-blur-2xl border border-black/[0.08] dark:border-white/[0.08] shadow-lg shadow-black/[0.03] dark:shadow-black/20 py-2 mt-2 mx-4 md:mx-auto"
+              : "bg-white/30 dark:bg-white/[0.02] backdrop-blur-xl border border-transparent py-2 mt-2 mx-4 md:mx-auto"
+          )}
+        >
           {/* Logo */}
           <a
             href="/"
@@ -107,16 +114,16 @@ export function Navbar() {
                 key={link.href}
                 onClick={() => handleNavClick(link.href)}
                 className={cn(
-                  "relative px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-200",
+                  "relative px-4 py-1.5 text-sm font-medium rounded-full transition-all duration-300",
                   isLinkActive(link.href)
-                    ? "text-violet-600 dark:text-violet-400"
-                    : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                    ? "text-white dark:text-white"
+                    : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
                 )}
               >
                 {isLinkActive(link.href) && (
                   <motion.div
                     layoutId="activeNav"
-                    className="absolute inset-0 rounded-lg bg-violet-500/10"
+                    className="absolute inset-0 rounded-full bg-violet-600/90 dark:bg-violet-500/20 border border-violet-500/30"
                     transition={{ type: "spring" as const, stiffness: 380, damping: 30 }}
                   />
                 )}
