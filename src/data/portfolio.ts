@@ -154,7 +154,7 @@ export const projects: Project[] = [
     tech: ["Python"],
     liveUrl: "https://ai-scraper-five.vercel.app/",
     githubUrl: "https://github.com/TusharxSingh/Lyftr",
-    image: "/projects/scraper.png",
+    image: "/projects/aiscraper.jpeg",
     featured: true,
   },
 ];
