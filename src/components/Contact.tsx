@@ -4,17 +4,11 @@ import { useState, type FormEvent } from "react";
 import { Section } from "@/components/ui/Section";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Button } from "@/components/ui/Button";
-import { siteConfig, socialLinks } from "@/data/portfolio";
+import { siteConfig } from "@/data/portfolio";
 import { motion } from "framer-motion";
-import { Send, Github, Linkedin, Code2, Mail } from "lucide-react";
+import { Send } from "lucide-react";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
-
-const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  github: Github,
-  linkedin: Linkedin,
-  "code-2": Code2,
-  mail: Mail,
-};
+import { SocialIconButtons } from "@/components/SocialIconButtons";
 
 export function Contact() {
   const reducedMotion = useReducedMotion();
@@ -56,11 +50,11 @@ export function Contact() {
 
   return (
     <Section id="contact" title="Get in Touch" subtitle="I'd love to hear from you">
-      <div className="grid gap-8 md:grid-cols-2 max-w-4xl mx-auto">
-        {/* Contact Form */}
+      <div className="w-full max-w-2xl mx-auto">
+        {/* Contact Form — centered */}
         <motion.div
-          initial={reducedMotion ? {} : { opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={reducedMotion ? {} : { opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
@@ -134,66 +128,15 @@ export function Contact() {
           </GlassCard>
         </motion.div>
 
-        {/* Contact Info */}
+        {/* Social Icon Buttons — below form */}
         <motion.div
-          initial={reducedMotion ? {} : { opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          initial={reducedMotion ? {} : { opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="flex flex-col gap-6"
+          className="mt-12 flex justify-center"
         >
-          <GlassCard className="p-8">
-            <h3 className="mb-2 text-lg font-semibold text-slate-900 dark:text-white">
-              Let's connect
-            </h3>
-            <p className="text-sm text-slate-600 dark:text-slate-400 mb-6">
-              Feel free to reach out through any of these channels.
-              I'm always open to discussing new projects and opportunities.
-            </p>
-
-            <div className="space-y-4">
-              {socialLinks.map((link) => {
-                const IconComponent = iconMap[link.icon];
-                return (
-                  <a
-                    key={link.label}
-                    href={link.url}
-                    target={link.url.startsWith("mailto:") ? undefined : "_blank"}
-                    rel={link.url.startsWith("mailto:") ? undefined : "noopener noreferrer"}
-                    className="flex items-center gap-4 rounded-xl p-3 bg-white/50 border border-black/[0.06] dark:bg-white/[0.03] dark:border-white/[0.06] hover:bg-white/70 dark:hover:bg-white/[0.08] hover:border-violet-500/20 transition-all duration-300 group"
-                    aria-label={`Contact via ${link.label}`}
-                  >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-violet-500/10 group-hover:bg-violet-500/20 transition-colors duration-300">
-                      {IconComponent && (
-                        <IconComponent className="h-5 w-5 text-violet-500 dark:text-violet-400" />
-                      )}
-                    </div>
-                    <div>
-                      <p className="text-sm font-medium text-slate-900 dark:text-white">
-                        {link.label}
-                      </p>
-                      <p className="text-xs text-slate-500 dark:text-slate-500 truncate max-w-[200px]">
-                        {link.url.replace("mailto:", "").replace("https://", "")}
-                      </p>
-                    </div>
-                  </a>
-                );
-              })}
-            </div>
-          </GlassCard>
-
-          {/* Email CTA */}
-          <GlassCard className="p-6 text-center">
-            <p className="text-sm text-slate-600 dark:text-slate-400">
-              Prefer email? Reach me directly at
-            </p>
-            <a
-              href={`mailto:${siteConfig.email}`}
-              className="mt-1 inline-block text-sm font-semibold text-violet-600 dark:text-violet-400 hover:text-violet-500 transition-colors"
-            >
-              {siteConfig.email}
-            </a>
-          </GlassCard>
+          <SocialIconButtons />
         </motion.div>
       </div>
     </Section>
