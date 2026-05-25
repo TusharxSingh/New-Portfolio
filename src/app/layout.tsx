@@ -28,12 +28,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} font-sans min-h-screen flex flex-col`}>
-        <PageLoader />
-        <ThemeProvider>
-          <Navbar />
-          <main className="flex-grow">{children}</main>
-          <Footer />
-        </ThemeProvider>
+        <PageLoader>
+          <ThemeProvider>
+            <Navbar />
+            <main className="flex-grow">{children}</main>
+            <Footer />
+          </ThemeProvider>
+        </PageLoader>
       </body>
     </html>
   );

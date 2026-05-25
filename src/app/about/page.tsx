@@ -1,10 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { LightRays } from "@/components/LightRays";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { TransitionLink } from "@/components/ui/TransitionLink";
 
 export default function AboutPage() {
   return (
@@ -32,13 +32,13 @@ export default function AboutPage() {
 
         {/* Back home link */}
         <div className="absolute top-6 left-6 md:left-12 z-20">
-          <Link
+          <TransitionLink
             href="/"
             className="inline-flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors duration-200 group"
           >
             <ArrowLeft className="h-4 w-4 transition-transform duration-200 group-hover:-translate-x-1" />
             Back home
-          </Link>
+          </TransitionLink>
         </div>
 
         {/* Hero headline — animated immediately, no scroll needed */}
@@ -184,7 +184,7 @@ export default function AboutPage() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-16 text-center"
         >
-          <Link href="/#contact">
+          <TransitionLink href="/#contact">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -192,7 +192,7 @@ export default function AboutPage() {
             >
               Let&apos;s Work Together
             </motion.button>
-          </Link>
+          </TransitionLink>
         </motion.div>
       </section>
     </div>

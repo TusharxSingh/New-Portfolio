@@ -7,6 +7,7 @@ import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { navLinks, siteConfig } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
 import { useRouter, usePathname } from "next/navigation";
+import { usePageTransition } from "@/components/PageLoader";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -15,6 +16,7 @@ export function Navbar() {
   const { scrollY } = useScroll();
   const router = useRouter();
   const pathname = usePathname();
+  const { startTransition } = usePageTransition();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 50);
@@ -56,9 +58,9 @@ export function Navbar() {
     setIsMobileMenuOpen(false);
 
     if (href.startsWith("#")) {
-      // If not on the home page, navigate home first then the browser will handle the hash
       if (pathname !== "/") {
-        router.push(`/${href}`);
+        // Navigate home with transition, then scroll to hash
+        startTransition(() => router.push(`/${href}`));
         return;
       }
       const el = document.querySelector(href);
@@ -66,7 +68,8 @@ export function Navbar() {
         el.scrollIntoView({ behavior: "smooth" });
       }
     } else {
-      router.push(href);
+      // Page navigation — show loader then navigate
+      startTransition(() => router.push(href));
     }
   };
 
@@ -99,7 +102,7 @@ export function Navbar() {
               if (pathname === "/") {
                 window.scrollTo({ top: 0, behavior: "smooth" });
               } else {
-                router.push("/");
+                startTransition(() => router.push("/"));
               }
             }}
             className="text-xl font-bold bg-gradient-to-r from-violet-500 to-indigo-500 bg-clip-text text-transparent hover:from-violet-400 hover:to-indigo-400 transition-all duration-300"

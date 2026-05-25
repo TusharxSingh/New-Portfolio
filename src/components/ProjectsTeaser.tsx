@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Section } from "@/components/ui/Section";
 import { projects } from "@/data/portfolio";
 import { ArrowRight } from "lucide-react";
-import Link from "next/link";
+import { TransitionLink } from "@/components/ui/TransitionLink";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -25,7 +25,7 @@ export function ProjectsTeaser() {
         transition={{ duration: 0.5, delay: 0.3 }}
         className="mt-10 flex justify-center"
       >
-        <Link
+        <TransitionLink
           href="/projects"
           className="group inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold
             bg-violet-500/10 border border-violet-500/20 text-violet-600 dark:text-violet-400
@@ -33,7 +33,7 @@ export function ProjectsTeaser() {
         >
           View all projects
           <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
-        </Link>
+        </TransitionLink>
       </motion.div>
     </Section>
   );

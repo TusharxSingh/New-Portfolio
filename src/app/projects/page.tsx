@@ -3,8 +3,8 @@
 import { FlowingMenu } from "@/components/FlowingMenu";
 import { projects } from "@/data/portfolio";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { ArrowLeft, Github, ExternalLink } from "lucide-react";
+import { TransitionLink } from "@/components/ui/TransitionLink";
 import { useTheme } from "@/components/providers/ThemeProvider";
 
 const menuItems = projects.map((p) => ({
@@ -35,13 +35,13 @@ export default function ProjectsPage() {
       {/* Page Header */}
       <div className="pt-20 pb-6 px-6 md:px-12 flex items-end justify-between border-b border-black/[0.06] dark:border-white/[0.06]">
         <div>
-          <Link
+          <TransitionLink
             href="/"
             className="inline-flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 mb-4 group"
           >
             <ArrowLeft className="h-4 w-4 transition-transform duration-200 group-hover:-translate-x-1" />
             Back home
-          </Link>
+          </TransitionLink>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

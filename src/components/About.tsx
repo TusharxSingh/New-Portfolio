@@ -6,7 +6,7 @@ import { siteConfig } from "@/data/portfolio";
 import { motion } from "framer-motion";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import Image from "next/image";
-import Link from "next/link";
+import { TransitionLink } from "@/components/ui/TransitionLink";
 
 export function About() {
   const reducedMotion = useReducedMotion();
@@ -87,7 +87,7 @@ export function About() {
         transition={{ duration: 0.6, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] as const }}
         className="mt-10 flex justify-center"
       >
-        <Link href="/about" aria-label="Learn more about me">
+        <TransitionLink href="/about" aria-label="Learn more about me">
           <button
             style={{
               WebkitBoxReflect:
@@ -157,7 +157,7 @@ export function About() {
               />
             </svg>
           </button>
-        </Link>
+        </TransitionLink>
       </motion.div>
     </Section>
   );
