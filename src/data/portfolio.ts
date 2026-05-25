@@ -28,11 +28,6 @@ export interface SocialLink {
   icon: string;
 }
 
-export interface LeetCodeStat {
-  label: string;
-  value: string;
-}
-
 // ── Site-wide configuration ──────────────────────────────────
 
 export const siteConfig = {
@@ -158,14 +153,3 @@ export const projects: Project[] = [
     featured: true,
   },
 ];
-
-// ── LeetCode profile ─────────────────────────────────────────
-
-export const leetcodeProfile = {
-  url: "https://leetcode.com/u/tusharrr23/",
-  stats: [
-    { label: "Problems Solved", value: "—" },
-    { label: "Ranking", value: "—" },
-    { label: "Badges", value: "—" },
-  ] as LeetCodeStat[],
-};
