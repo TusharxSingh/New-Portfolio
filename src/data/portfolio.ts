@@ -137,6 +137,26 @@ export const projects: Project[] = [
     image: "/projects/portfolio.png",
     featured: true,
   },
+  {
+    title: "TimexThapar",
+    description:
+      "Genetic algorithm-powered timetable generator for developing faculty schedules intelligently.",
+    tech: ["Python", "Cython", "C", "JavaScript", "CSS", "HTML"],
+    liveUrl: "https://github.com/TusharxSingh/TimexThapar",
+    githubUrl: "https://github.com/TusharxSingh/TimexThapar",
+    image: "/projects/timexthapar.png",
+    featured: true,
+  },
+  {
+    title: "AI Web Scraper",
+    description:
+      "Intelligent web scraping powered by AI for smart data extraction.",
+    tech: ["Python"],
+    liveUrl: "https://ai-scraper-five.vercel.app/",
+    githubUrl: "https://github.com/TusharxSingh/Lyftr",
+    image: "/projects/scraper.png",
+    featured: true,
+  },
 ];
 
 // ── LeetCode profile ─────────────────────────────────────────
