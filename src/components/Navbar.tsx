@@ -46,6 +46,25 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [pathname]);
 
+  // Sync browser tab title with active section/page
+  useEffect(() => {
+    const name = siteConfig.name;
+    if (pathname === "/") {
+      if (activeSection) {
+        // Capitalize section name: "about" → "About"
+        const label = navLinks.find((l) => l.href === `#${activeSection}`)?.label || activeSection;
+        document.title = `${label} | ${name}`;
+      } else {
+        document.title = `Home | ${name}`;
+      }
+    } else {
+      // Match pathname to a nav link label, or capitalize the path
+      const link = navLinks.find((l) => l.href === pathname);
+      const label = link?.label || pathname.replace("/", "").replace(/^\w/, (c) => c.toUpperCase());
+      document.title = `${label} | ${name}`;
+    }
+  }, [pathname, activeSection]);
+
   // Determine whether a nav link is active
   const isLinkActive = (href: string) => {
     if (href.startsWith("#")) {
