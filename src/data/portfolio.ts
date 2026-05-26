@@ -137,7 +137,7 @@ export const projects: Project[] = [
     description:
       "Genetic algorithm-powered timetable generator for developing faculty schedules intelligently.",
     tech: ["Python", "Cython", "C", "JavaScript", "CSS", "HTML"],
-    liveUrl: "https://github.com/TusharxSingh/TimexThapar",
+    liveUrl: "https://timexthapar.vercel.app",
     githubUrl: "https://github.com/TusharxSingh/TimexThapar",
     image: "/projects/timexthapar.png",
     featured: true,
