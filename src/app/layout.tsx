@@ -18,9 +18,6 @@ export const metadata: Metadata = {
   keywords: ["Portfolio", "Next.js", "Full-Stack Developer", "Tushar Singh Chauhan"],
   authors: [{ name: siteConfig.name }],
   creator: siteConfig.name,
-  icons: {
-    icon: "/favicon.png",
-  },
 };
 
 export default function RootLayout({
